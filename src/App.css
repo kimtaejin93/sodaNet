@@ -1,0 +1,50 @@
+.mx-15per {
+  margin-left: 15%;
+  margin-right: 15%;
+}
+.square:after {
+  content: '';
+  display: block;
+  padding-bottom: 100%;
+}
+.ad1 {
+  font-family: 'Nanum Gothic', sans-serif;
+}
+.ad1-p {
+  position: absolute;
+  top: 40%;
+  color: black;
+}
+.dot {
+  content: '';
+  position: absolute;
+  font-size: 0.2em;
+  color: brown;
+  left: 50%;
+  top: 1em;
+  transform: translateX(-50%);
+}
+@media (max-width: 768px) {
+  .dot {
+    top: -20%;
+  }
+}
+.place {
+  display: none;
+}
+.search-place:hover .place {
+  display: block;
+}
+.scroll::-webkit-scrollbar {
+  width: 10px;
+}
+.scroll::-webkit-scrollbar-thumb {
+  height: 30%; /* 스크롤바의 길이 */
+  background: rgba(207, 121, 8, 0.5); /* 스크롤바의 색상 */
+
+  border-radius: 10px;
+}
+
+.scroll::-webkit-scrollbar-track {
+  background: rgba(33, 122, 244, 0.5); /*스크롤바 뒷 배경 색상*/
+}
