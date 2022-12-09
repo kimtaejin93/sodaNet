@@ -6,6 +6,7 @@ import {
   signOut,
   onAuthStateChanged,
 } from 'firebase/auth';
+import { getDatabase, ref, set, onValue, get } from 'firebase/database';
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -18,6 +19,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const provider = new GoogleAuthProvider();
 const auth = getAuth();
+const database = getDatabase();
 export async function login() {
   return signInWithPopup(auth, provider)
     .then((result) => {
@@ -51,5 +53,30 @@ export function onUserStateChange(callback) {
   const auth = getAuth();
   onAuthStateChanged(auth, (user) => {
     callback(user);
+  });
+}
+
+export async function writeUserData(uuid, userId, name, offer, select) {
+  const db = getDatabase();
+  set(ref(db, 'users/' + uuid), {
+    uuid,
+    userId,
+    username: name,
+    offer,
+    select,
+  });
+}
+
+export async function readBoard(callback) {
+  return get(ref(database, 'users')).then((data) => {
+    if (data.exists()) {
+      const newData = data.val();
+      const board = [];
+
+      for (let item in newData) {
+        board.push({ item: newData[item] });
+      }
+      callback(board);
+    }
   });
 }

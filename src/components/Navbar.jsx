@@ -14,7 +14,7 @@ const Navbar = () => {
   useEffect(() => {
     onUserStateChange((user) => setLoginUser(user));
   }, []);
-  console.log(loginUser);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleLogin = () => {
@@ -48,10 +48,10 @@ const Navbar = () => {
         </Link>
       </div>
       <nav>
-        <Link to='/' className='hover:text-gray-600'>
+        <Link to='/' className='hover:text-gray-600 font-bold'>
           홈
         </Link>
-        <Link to='/board' className='ml-5 hover:text-gray-600'>
+        <Link to='/board' className='ml-5 hover:text-gray-600 font-bold'>
           소바 찾기
         </Link>
       </nav>
@@ -69,7 +69,7 @@ const Navbar = () => {
       {loginUser ? (
         <div className='flex items-center'>
           <img src={loginUser.photoURL} className='w-8 rounded-full' />
-          <div>{loginUser.displayName}</div>
+          <div className='font-bold ml-4'>{loginUser.displayName}</div>
         </div>
       ) : (
         ''

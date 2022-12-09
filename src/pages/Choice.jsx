@@ -3,7 +3,8 @@ import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { BiPhone, BiMapAlt } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
-import { onUserStateChange } from '../api/firebase';
+import { onUserStateChange, writeUserData } from '../api/firebase';
+import { v4 as uuid } from 'uuid';
 
 const { kakao } = window;
 const Choice = () => {
@@ -36,6 +37,7 @@ const Choice = () => {
 
     if (loginUser) {
       window.alert('신청이 완료되었습니다.');
+      navigate('/board');
     } else window.alert('로그인이 필요합니다.');
   };
   return (
@@ -62,7 +64,18 @@ const Choice = () => {
               className='border-b-gray-600 border'
               onChange={(e) => setOfferPrice(e.target.value)}
             />
-            <button className='border-gray-600 mb-5 pl-3 pr-3 rounded-md border hover:border-gray-400 hover:text-gray-600'>
+            <button
+              onClick={() => {
+                writeUserData(
+                  uuid(),
+                  loginUser.uid,
+                  loginUser.displayName,
+                  offerPrice,
+                  choicePlace
+                );
+              }}
+              className='border-gray-600 mb-5 pl-3 pr-3 rounded-md border hover:border-gray-400 hover:text-gray-600'
+            >
               신청하기
             </button>
           </form>

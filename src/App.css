@@ -1,3 +1,6 @@
+body {
+  font-family: 'IBM Plex Sans KR', sans-serif;
+}
 .mx-15per {
   margin-left: 15%;
   margin-right: 15%;
@@ -8,7 +11,7 @@
   padding-bottom: 100%;
 }
 .ad1 {
-  font-family: 'Nanum Gothic', sans-serif;
+  font-family: 'IBM Plex Sans KR', sans-serif;
 }
 .ad1-p {
   position: absolute;
@@ -21,12 +24,12 @@
   font-size: 0.2em;
   color: brown;
   left: 50%;
-  top: 1em;
+  top: 0.5em;
   transform: translateX(-50%);
 }
 @media (max-width: 768px) {
   .dot {
-    top: -20%;
+    top: -30%;
   }
 }
 .place {
@@ -47,4 +50,91 @@
 
 .scroll::-webkit-scrollbar-track {
   background: rgba(33, 122, 244, 0.5); /*스크롤바 뒷 배경 색상*/
+}
+.rwd-table {
+  margin: auto;
+  min-width: 200px;
+  max-width: 100%;
+  border-collapse: collapse;
+}
+
+.rwd-table th {
+  border-top: none;
+  background: #73685d;
+  color: #fff;
+}
+
+.rwd-table tr {
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  background-color: #f5f9fc;
+}
+
+.rwd-table th {
+  display: none;
+}
+
+.rwd-table td {
+  display: block;
+}
+
+.rwd-table td:first-child {
+  margin-top: 0.5em;
+}
+
+.rwd-table td:last-child {
+  margin-bottom: 0.5em;
+}
+
+.rwd-table td:before {
+  content: attr(data-th) ': ';
+  font-weight: bold;
+  width: 120px;
+  display: inline-block;
+  color: #000;
+}
+
+.rwd-table {
+  color: #333;
+  border-radius: 0.4em;
+  overflow: hidden;
+}
+
+.rwd-table tr {
+  border-color: #bfbfbf;
+}
+
+.rwd-table th,
+.rwd-table td {
+  padding: 0.5em 1em;
+}
+@media screen and (max-width: 601px) {
+  .rwd-table tr:nth-child(2) {
+    border-top: none;
+  }
+}
+@media screen and (min-width: 600px) {
+  .rwd-table tr:hover {
+    background-color: #d8e7f3;
+  }
+  .rwd-table td:before {
+    display: none;
+  }
+  .rwd-table th,
+  .rwd-table td {
+    display: table-cell;
+    padding: 0.25em 0.5em;
+  }
+  .rwd-table th:first-child,
+  .rwd-table td:first-child {
+    padding-left: 0;
+  }
+  .rwd-table th:last-child,
+  .rwd-table td:last-child {
+    padding-right: 0;
+  }
+  .rwd-table th,
+  .rwd-table td {
+    padding: 1em !important;
+  }
 }
