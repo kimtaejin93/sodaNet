@@ -26,6 +26,7 @@ export async function login() {
       // This gives you a Google Access Token. You can use it to access the Google API.
 
       const user = result.user;
+      console.log('유저', user);
       return user;
       // ...
     })
